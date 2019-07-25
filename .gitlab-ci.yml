@@ -24,4 +24,5 @@ build-image:
     - name: docker:dind
       command: ["--insecure-registry=10.41.8.200:30200"]
   script:
-    - docker version
+    - docker pull 10.41.8.200:30200/cicd-test
+    - docker images inspect 10.41.8.200:30200/cicd-test | head
