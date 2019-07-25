@@ -19,6 +19,8 @@ build-image:
   image: docker:stable
   variables:
     DOCKER_DRIVER: overlaby
-    DOCKER_HOST: unix:///var/run/docker.sock
+    DOCKER_HOST: tcp://localhost:2375/
+  services:
+    - docker:dind
   script:
     - docker info
