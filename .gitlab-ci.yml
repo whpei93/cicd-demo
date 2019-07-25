@@ -1,0 +1,15 @@
+stages:
+  - build
+  - test
+
+job1:
+  stage: test
+  script:
+    - "test start"
+    - "test done"
+
+job2:
+  stage: build
+  script:
+    - echo "build start"
+    - echo "build done"
