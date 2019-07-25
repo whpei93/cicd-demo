@@ -26,7 +26,7 @@ build-image:
     DOCKER_DRIVER: overlay2
     DOCKER_HOST: tcp://localhost:2375/
   services:
-    - docker:dind
-    - command: ["--insecure-registry=10.41.8.200:30200"]
+    - name: docker:dind
+      command: ["--insecure-registry=10.41.8.200:30200"]
   script:
     - docker info
