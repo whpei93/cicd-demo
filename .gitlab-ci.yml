@@ -1,14 +1,21 @@
+image: docker:stable
+
 stages:
   - build
   - test
 
-job1:
+test-job1:
   stage: test
   script:
     - "test start"
     - "test done"
 
-job2:
+test-job2:
+  stage: test
+  script:
+    - echo $CI_REGISTRY
+
+build-job1:
   stage: build
   script:
     - echo "build start"
