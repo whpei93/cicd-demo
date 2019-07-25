@@ -2,11 +2,6 @@ stages:
   - build
   - test
 
-
-  
-before_script:
-  - docker info
-
 test-job1:
   stage: test
   script:
@@ -29,4 +24,4 @@ build-image:
     - name: docker:dind
       command: ["--insecure-registry=10.41.8.200:30200"]
   script:
-    - docker info
+    - docker version
