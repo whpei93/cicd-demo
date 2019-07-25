@@ -18,7 +18,7 @@ build-image:
   stage: build
   image: docker:stable
   variables:
-    DOCKER_DRIVER: overlaby
+    DOCKER_DRIVER: overlay2
     DOCKER_HOST: tcp://localhost:2375/
   services:
     - docker:dind
