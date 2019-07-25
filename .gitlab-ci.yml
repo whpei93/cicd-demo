@@ -2,14 +2,7 @@ stages:
   - build
   - test
 
-image: docker:stable
 
-variables:
-  DOCKER_DRIVER: overlay2
-  DOCKER_HOST: tcp://localhost:2375/
-
-services:
-  - docker:dind
   
 before_script:
   - docker info
@@ -28,5 +21,12 @@ test-job2:
 
 build-image:
   stage: build
+  image: docker:stable
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_HOST: tcp://localhost:2375/
+  services:
+    - docker:dind
+    - command: ["--insecure-registry=10.41.8.200:30200"]
   script:
     - docker info
