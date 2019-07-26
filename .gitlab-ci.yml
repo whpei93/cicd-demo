@@ -1,22 +1,23 @@
 stages:
   - test
   - build
+  - staging
+  - deploy
 
 test-job1:
   stage: test
+  image: python:latest
   script:
+    - ls 
     - echo ${CI_REGISTRY}
     - echo ${CI_REGISTRY_IMAGE}
     - echo ${CI_COMMIT_TAG}
     - echo ${CI_COMMIT_REF_NAME}
 
-test-job2:
-  stage: test
-  script:
-    - echo 2
-
 build-image:
   stage: build
+  only:
+    - tags
   image: docker:stable
   variables:
     DOCKER_DRIVER: overlay2
