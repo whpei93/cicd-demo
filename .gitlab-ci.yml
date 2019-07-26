@@ -24,4 +24,5 @@ build-image:
   services:
     - name: docker:dind
   script:
+    - ls
     - docker pull 10.41.8.200:30200/cicd-test
