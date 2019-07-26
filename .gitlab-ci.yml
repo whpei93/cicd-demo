@@ -12,8 +12,6 @@ test-job1:
 
 build-image:
   stage: build
-  only:
-    - tags
   image: docker:stable
   variables:
     DOCKER_DRIVER: overlay2
