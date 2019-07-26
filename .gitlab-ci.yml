@@ -17,7 +17,7 @@ build-image:
     DOCKER_DRIVER: overlay2
   services:
     - name: docker:dind
-      command: ["--insecure-registry=${CI_REGISTRY}"]
+      command: ["--insecure-registry=10.41.8.200:30240"]
   script:
     - docker build -t "${CI_REGISTRY}/${CI_PROJECT_NAME}" .
     - docker push "${CI_REGISTRY}/${CI_PROJECT_NAME}"
