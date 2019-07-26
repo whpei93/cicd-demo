@@ -18,7 +18,7 @@ build-image:
   services:
     - name: docker:dind
       entrypoint: ["dockerd-entrypoint.sh"]
-      command: ["--insecure-registry=http://${CI_REGISTRY}"]
+      command: ["--insecure-registry", "${CI_REGISTRY}"]
   script:
     - docker info
     - docker build -t "${CI_REGISTRY}/${CI_PROJECT_NAME}" .
