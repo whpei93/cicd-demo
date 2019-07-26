@@ -1,18 +1,19 @@
 stages:
-  - build
   - test
+  - build
 
 test-job1:
   stage: test
   script:
-    - "test start"
-    - "test done"
+    - echo ${CI_REGISTRY}
+    - echo ${CI_REGISTRY_IMAGE}
+    - echo ${CI_COMMIT_TAG}
+    -echo ${CI_COMMIT_REF_NAME}
 
 test-job2:
   stage: test
   script:
-    - echo $CI_REGISTRY
-    - docker info 
+    - echo 2
 
 build-image:
   stage: build
@@ -21,7 +22,5 @@ build-image:
     DOCKER_DRIVER: overlay2
   services:
     - name: docker:dind
-      command: ["--insecure-registry=10.41.8.200:30200"]
   script:
     - docker pull 10.41.8.200:30200/cicd-test
-    - docker images
