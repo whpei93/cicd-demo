@@ -8,11 +8,15 @@ test-job1:
   stage: test
   image: python:latest
   script:
-    - python --version
+    - cd cicd
+    - pip install requirements.txt
+    - python manage.py test web
 
 build-image:
   stage: build
   image: docker:stable
+  only:
+    - tags
   variables:
     DOCKER_DRIVER: overlay2
   services:
