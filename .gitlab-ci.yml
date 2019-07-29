@@ -23,3 +23,9 @@ build-image:
   script:
     - docker build -t "${CI_REGISTRY}/${CI_PROJECT_NAME}" .
     - docker push "${CI_REGISTRY}/${CI_PROJECT_NAME}"
+
+deploy-job:
+  stage: deploy
+  image: bitnami/kubectl
+  script:
+    - kubectl -n dev get pods
