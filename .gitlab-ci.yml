@@ -21,7 +21,5 @@ build-image:
     - name: docker:dind
       command: ["--insecure-registry=${CI_REGISTRY}"]
   script:
-    - ls
-    - docker info
     - docker build -t "${CI_REGISTRY}/${CI_PROJECT_NAME}" .
     - docker push "${CI_REGISTRY}/${CI_PROJECT_NAME}"
