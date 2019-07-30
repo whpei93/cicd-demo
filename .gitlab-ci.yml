@@ -29,4 +29,4 @@ deploy-job:
   stage: deploy
   image: bitnami/kubectl
   script:
-    - kubectl cluster-info
+    - kubectl -n prod get pods
