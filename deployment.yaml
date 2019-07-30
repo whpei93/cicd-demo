@@ -22,7 +22,7 @@ spec:
           - name: APP_VERSION
             valueFrom:
               fieldRef:
-                fieldPath: metadata.version
+                fieldPath: metadata.labels.version
         ports:
         - name: http
           protocol: TCP
