@@ -1,4 +1,5 @@
 stages:
+  - deploy
   - test
   - build
   - staging
@@ -28,4 +29,4 @@ deploy-job:
   stage: deploy
   image: bitnami/kubectl
   script:
-    - kubectl -n dev get pods
+    - kubectl cluster-info
