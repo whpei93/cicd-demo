@@ -1,0 +1,32 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: cicd-demo
+  namespace: dev
+spec:
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: cicd-demo
+        version: __CI_COMMIT_TAG__
+    spec:
+      containers:
+      - name: cicd-demo
+        image: 10.41.8.200:30200/cicd-demo:__CI_COMMIT_TAG__
+        ports:
+        - name: http
+          protocol: TCP
+          containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /web/
+            port: 80
+          initialDelaySeconds: 3
+          timeoutSeconds: 2
+        readinessProbe:
+          httpGet:
+            path: /web/
+            port: 80
+          initialDelaySeconds: 3
+          timeoutSeconds: 2

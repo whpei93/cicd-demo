@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: cicd-demo
+spec:
+  selector:
+    app: cicd-demo
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30300
+  type: NodePort
