@@ -31,6 +31,7 @@ deploy-job:
     - tags
   image: bitnami/kubectl
   script:
-    - sed -i "s/____CI_COMMIT_TAG____/${CI_COMMIT_TAG}/" deployment.yaml
+    - sed -i "s/____CI_COMMIT_TAG____/${CI_COMMIT_TAG}/g" deployment.yaml
+    - cat deployment.yaml
     - kubectl apply -f deployment.yaml
     - kubectl apply -f service.yaml
