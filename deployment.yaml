@@ -14,6 +14,11 @@ spec:
       containers:
       - name: cicd-demo
         image: 10.41.8.200:30200/cicd-demo:__CI_COMMIT_TAG__
+        env:
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
         ports:
         - name: http
           protocol: TCP
