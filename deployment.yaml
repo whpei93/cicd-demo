@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: cicd-demo
+  name: cicd-demo:__CI_COMMIT_TAG__
   namespace: dev
 spec:
   replicas: 4
@@ -9,6 +9,7 @@ spec:
     metadata:
       labels:
         app: cicd-demo
+        version: __CI_COMMIT_TAG__
     spec:
       containers:
       - name: cicd-demo
@@ -19,7 +20,9 @@ spec:
               fieldRef:
                 fieldPath: metadata.name
           - name: APP_VERSION
-            value: __CI_COMMIT_TAG__
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.labels.version
         ports:
         - name: http
           protocol: TCP
