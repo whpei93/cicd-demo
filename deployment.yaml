@@ -9,7 +9,6 @@ spec:
     metadata:
       labels:
         app: cicd-demo
-        version: __CI_COMMIT_TAG__
     spec:
       containers:
       - name: cicd-demo
