@@ -1,7 +1,7 @@
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: cicd-demo:__CI_COMMIT_TAG__
+  name: cicd-demo-__CI_COMMIT_TAG__
   namespace: dev
 spec:
   replicas: 4
